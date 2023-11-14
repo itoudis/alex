@@ -4,11 +4,11 @@ plugins {
     id("java")
 }
 
-group = "org.itoudis"
-version = "1.0-SNAPSHOT"
-
 repositories {
+    // TODO gereksiz varsa kaldır
+    gradlePluginPortal()
     mavenCentral()
+    maven { url = uri("https://plugins.gradle.org/m2/") }
 }
 
 java {
