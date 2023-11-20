@@ -23,6 +23,8 @@
             <option value="$PROJECT_DIR$/applications" />
             <option value="$PROJECT_DIR$/applications/product" />
             <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/library/common" />
           </set>
         </option>
       </GradleProjectSettings>
