@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:16.1-alpine
+    ports:
+      - "5455:5432"
+    volumes:
+      - ~/DockerVolumes/alex/postgres:/bitnami/postgresql
+      - ./create-dbs.sql:/docker-entrypoint-initdb.d/create-dbs.sql
+    environment:
+      - POSTGRES_PASSWORD=q
+      - TZ=Europe/Istanbul
+      - LANG=tr-TR.utf8
+      - POSTGRES_INITDB_ARGS=--locale-provider=icu --icu-locale=tr-TR
+    restart: always
