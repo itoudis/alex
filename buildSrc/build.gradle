@@ -1,0 +1,50 @@
+plugins {
+    id 'groovy-gradle-plugin'
+    id 'org.liquibase.gradle' version '2.2.0'
+}
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+    maven { url = uri("https://plugins.gradle.org/m2/") }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-gradle-plugin:3.1.5'
+    implementation 'org.liquibase:liquibase-core:4.24.0'
+
+    liquibaseRuntime 'org.liquibase:liquibase-core:4.24.0'
+    liquibaseRuntime 'info.picocli:picocli:4.7.5'
+    liquibaseRuntime 'org.yaml:snakeyaml:2.0'
+    liquibaseRuntime 'org.postgresql:postgresql:42.6.0'
+}
+
+liquibase {
+    activities {
+        register('updateDatabase') {
+            arguments([
+                    'logLevel': 'FINE',
+                    'changelogFile': 'changelog-master.yaml',
+                    'url': 'jdbc:postgresql://localhost:5455/product',
+                    'username': 'postgres',
+                    'password': 'q',
+                    'driver': 'org.postgresql.Driver'
+            ])
+        }
+
+        register('generateChangeLog') {
+            def diffTypes = project.findProperty('diffTypes') as String ?: 'tables,views,columns,indexes,foreignkeys,primarykeys,uniqueconstraints,sequences'
+
+            arguments([
+                    'logLevel': 'FINE',
+                    'changelogFile': 'changelog-master.yaml',
+                    'url': 'jdbc:postgresql://localhost:5455/product',
+                    'username': 'postgres',
+                    'password': 'q',
+                    'driver': 'org.postgresql.Driver',
+                    'diffTypes': diffTypes
+            ])
+        }
+    }
+    runList = 'updateDatabase'
+}
