@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: emre.basar
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: test_column
+                  type: INT
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+            tableName: product
