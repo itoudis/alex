@@ -12,3 +12,15 @@ services:
       - LANG=tr-TR.utf8
       - POSTGRES_INITDB_ARGS=--locale-provider=icu --icu-locale=tr-TR
     restart: always
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:22.0.3
+    ports:
+      - "8791:8080"
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    command: "start-dev --db postgres --db-url-host postgres --db-username postgres --db-password q"
+    restart: always
+    depends_on:
+      - postgres
