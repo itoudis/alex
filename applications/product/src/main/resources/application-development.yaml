@@ -3,3 +3,7 @@ spring:
     url: jdbc:postgresql://localhost:5455/product
     username: postgres
     password: q
+
+  liquibase:
+    clear-checksums: true
+    contexts: development
