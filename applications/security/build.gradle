@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+    id 'multimodule-config'
+    id 'spring-conventions'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.keycloak:keycloak-admin-client:22.0.3'
+}
+
