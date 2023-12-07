@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5455/security
+    username: postgres
+    password: q
+
+keycloak:
+  auth-server-url: http://localhost:8791
