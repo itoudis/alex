@@ -1,4 +1,4 @@
-package com.itoudis.alex.domain.user;
+package com.itoudis.alex.model;
 
 public enum Role {
     ROLE_ADMIN,

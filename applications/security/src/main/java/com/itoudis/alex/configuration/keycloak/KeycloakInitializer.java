@@ -1,8 +1,8 @@
 package com.itoudis.alex.configuration.keycloak;
 
 import com.itoudis.alex.configuration.DefaultUsers;
-import com.itoudis.alex.domain.user.Role;
-import com.itoudis.alex.domain.user.User;
+import com.itoudis.alex.model.Role;
+import com.itoudis.alex.model.User;
 import com.itoudis.alex.infra.configuration.Profiles;
 import jakarta.annotation.PostConstruct;
 import org.keycloak.admin.client.Keycloak;
