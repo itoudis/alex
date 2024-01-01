@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @GetMapping("/test")
-    String test(String throwException) {
+    TestResponse test(String throwException) {
         if (throwException.equals("throw")) throw new RuntimeException("testException");
-        return "test";
+        return new TestResponse("test!!!!!");
     }
 }
