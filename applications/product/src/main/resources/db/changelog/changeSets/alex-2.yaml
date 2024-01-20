@@ -64,25 +64,12 @@ databaseChangeLog:
                -  column:
                     name:  value
                     type:  varchar(50)
-        - alterSequence:
-            sequenceName: option_value_id_seq
-            cacheSize: 10
-        -  createTable:
-             tableName:  attribute_option_value
-             columns:
                - column:
                    name: attribute_id
                    type: bigint
                    constraints:
                      references: attribute
-                     foreignKeyName: fk_attribute_id
-               - column:
-                   name: option_value_id
-                   type: bigint
-                   constraints:
-                     references: option_value
-                     foreignKeyName: fk_option_value_id
-        - addPrimaryKey:
-            constraintName: "pk_attribute_option_value"
-            columnNames: "attribute_id, option_value_id"
-            tableName: attribute_option_value
+                     foreignKeyName: fk_option_value_attribute
+        - alterSequence:
+            sequenceName: option_value_id_seq
+            cacheSize: 10
