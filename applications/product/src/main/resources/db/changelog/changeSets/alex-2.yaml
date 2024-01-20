@@ -25,6 +25,10 @@ databaseChangeLog:
                    name:  attribute_type
                    type:  varchar(50)
               -  column:
+                   name:  version
+                   type:  int
+                   defaultValue: "0"
+              -  column:
                    name:  name
                    type:  varchar(50)
                    constraints:
@@ -53,6 +57,10 @@ databaseChangeLog:
                     name:  last_modified_date
                     type:  timestamp
                     defaultValueComputed: now()
+               -  column:
+                    name:  version
+                    type:  int
+                    defaultValue: "0"
                -  column:
                     name:  value
                     type:  varchar(50)

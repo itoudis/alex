@@ -7,3 +7,5 @@ spring:
   liquibase:
     clear-checksums: true
     contexts: development
+  jpa:
+    show-sql: true
