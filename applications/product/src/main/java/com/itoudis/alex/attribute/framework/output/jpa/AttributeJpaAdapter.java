@@ -1,18 +1,20 @@
 package com.itoudis.alex.attribute.framework.output.jpa;
 
-import com.itoudis.alex.attribute.framework.output.jpa.entity.AttributeEntity;
+import com.itoudis.alex.attribute.domain.Attribute;
+import com.itoudis.alex.attribute.domain.port.output.AttributeDbPort;
+import com.itoudis.alex.attribute.framework.mapper.AttributeMapper;
 import com.itoudis.alex.attribute.framework.output.jpa.repository.AttributeJpaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AttributeJpaAdapter {
+@AllArgsConstructor
+public class AttributeJpaAdapter implements AttributeDbPort {
 
-    @Autowired
-    private AttributeJpaRepository attributeJpaRepository;
+    private final AttributeJpaRepository attributeJpaRepository;
 
-    public AttributeEntity save(AttributeEntity attributeEntity){
-        return attributeJpaRepository.save(attributeEntity);
+    @Override
+    public Attribute createAttribute(Attribute attribute) {
+        return AttributeMapper.INSTANCE.entityToDomain(attributeJpaRepository.save(AttributeMapper.INSTANCE.domainToEntity(attribute)));
     }
-
 }
