@@ -4,6 +4,7 @@ import com.itoudis.alex.attribute.domain.Attribute;
 
 public interface AttributeDbPort {
 
-    Attribute createAttribute(Attribute attribute);
+    Attribute saveAttribute(Attribute attribute);
 
+    Attribute getAttribute(Long id);
 }
