@@ -7,5 +7,5 @@ import lombok.Builder;
 import java.util.List;
 
 @Builder
-public record AddAttributeResponse(String attributeName, AttributeType attributeType, List<OptionValue> optionValues) {
+public record AttributeResponse(String attributeName, AttributeType attributeType, List<OptionValue> optionValues) {
 }
