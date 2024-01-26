@@ -1,6 +1,6 @@
 # E-Commerce App using DDD and Hexagonal Architecture
 
-
+Project Development LifeCycle = https://docs.google.com/document/d/1GGDN0XWwVPAAwbkt-_SowDjfPxObYw80YFRl8NBOYd8/edit?usp=sharing
 
 ### Product Service UML Class Diagram
 
