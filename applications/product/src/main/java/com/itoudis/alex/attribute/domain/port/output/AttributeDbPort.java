@@ -7,4 +7,6 @@ public interface AttributeDbPort {
     Attribute saveAttribute(Attribute attribute);
 
     Attribute getAttribute(Long id);
+
+    Attribute updateAttribute(Attribute attribute);
 }

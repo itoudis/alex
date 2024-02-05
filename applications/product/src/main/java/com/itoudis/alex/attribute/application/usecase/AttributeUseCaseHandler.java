@@ -19,10 +19,7 @@ public class AttributeUseCaseHandler {
     public Attribute updateAttribute(Attribute attribute){
         //TODO : id ile attribute var mı kontrolü
         //TODO : isimle attribute var mı kontrolü
-        Attribute attributeVT = attributeDbPort.getAttribute(attribute.getId());
-        attributeVT.setAttributeType(attribute.getAttributeType());
-        attributeVT.setName(attribute.getName());
-        attributeVT.setOptionValues(attribute.getOptionValues());
-        return attributeDbPort.saveAttribute(attributeVT);
+
+        return attributeDbPort.updateAttribute(attribute);
     }
 }

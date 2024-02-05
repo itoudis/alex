@@ -8,7 +8,7 @@ import java.util.List;
 
 public final class OptionValueMapper {
 
-    public static OptionValueMapper INSTANCE;
+    private static OptionValueMapper INSTANCE;
 
     public static OptionValueMapper INSTANCE() {
         if (INSTANCE == null) {

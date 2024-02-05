@@ -43,4 +43,12 @@ public abstract class BaseEntity implements Serializable {
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
     }
+
+
+    public void copyFrom(BaseEntity baseEntity){
+        this.id = baseEntity.id;
+        this.version = baseEntity.version;
+        this.createdDate = baseEntity.createdDate;
+        this.lastModifiedDate = baseEntity.lastModifiedDate;
+    }
 }

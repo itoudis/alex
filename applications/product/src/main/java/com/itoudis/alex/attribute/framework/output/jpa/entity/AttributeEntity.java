@@ -1,5 +1,7 @@
 package com.itoudis.alex.attribute.framework.output.jpa.entity;
 
+import com.itoudis.alex.attribute.domain.Attribute;
+import com.itoudis.alex.attribute.framework.mapper.OptionValueMapper;
 import com.itoudis.alex.infra.out.jpa.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -28,6 +30,12 @@ public class AttributeEntity extends BaseEntity {
         this.attributeType = attributeType;
         this.name = name;
         this.optionValues = optionValues;
+    }
+
+    public AttributeEntity(Attribute attribute) {
+        this.attributeType = attribute.getAttributeType().name();
+        this.name = attribute.getName();
+        this.optionValues = OptionValueMapper.INSTANCE().domainListToEntityList(attribute.getOptionValues());
     }
 }
 
