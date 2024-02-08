@@ -1,0 +1,75 @@
+databaseChangeLog:
+  - changeSet:
+      id: "18012024:2205"
+      author: berk.yilmaz
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  startWith: 1001
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              -  column:
+                   name:  created_date
+                   type:  timestamp
+                   defaultValueComputed: now()
+              -  column:
+                   name:  last_modified_date
+                   type:  timestamp
+                   defaultValueComputed: now()
+              -  column:
+                   name:  attribute_type
+                   type:  varchar(50)
+              -  column:
+                   name:  version
+                   type:  int
+                   defaultValue: "0"
+              -  column:
+                   name:  name
+                   type:  varchar(50)
+                   constraints:
+                     unique: true
+                     nullable: false
+            tableName: attribute
+        - alterSequence:
+            sequenceName: attribute_id_seq
+            cacheSize: 10
+        -  createTable:
+             tableName:  option_value
+             columns:
+               - column:
+                   name: id
+                   type: bigint
+                   autoIncrement: true
+                   startWith: 1001
+                   constraints:
+                     primaryKey:  true
+                     nullable:  false
+               -  column:
+                    name:  created_date
+                    type:  timestamp
+                    defaultValueComputed: now()
+               -  column:
+                    name:  last_modified_date
+                    type:  timestamp
+                    defaultValueComputed: now()
+               -  column:
+                    name:  version
+                    type:  int
+                    defaultValue: "0"
+               -  column:
+                    name:  value
+                    type:  varchar(50)
+               - column:
+                   name: attribute_id
+                   type: bigint
+                   constraints:
+                     references: attribute
+                     foreignKeyName: fk_option_value_attribute
+        - alterSequence:
+            sequenceName: option_value_id_seq
+            cacheSize: 10

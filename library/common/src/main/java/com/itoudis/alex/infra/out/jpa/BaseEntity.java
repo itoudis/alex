@@ -2,6 +2,7 @@ package com.itoudis.alex.infra.out.jpa;
 
 
 import jakarta.persistence.*;
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -12,14 +13,12 @@ import java.util.Objects;
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
+@Data
 public abstract class BaseEntity implements Serializable {
 
-    public BaseEntity(Long id) {
-        this.id = id;
-    }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
@@ -43,5 +42,13 @@ public abstract class BaseEntity implements Serializable {
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
+    }
+
+
+    public void copyFrom(BaseEntity baseEntity){
+        this.id = baseEntity.id;
+        this.version = baseEntity.version;
+        this.createdDate = baseEntity.createdDate;
+        this.lastModifiedDate = baseEntity.lastModifiedDate;
     }
 }
